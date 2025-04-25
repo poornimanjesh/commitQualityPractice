@@ -24,6 +24,9 @@ namespace commitQualityPractice
             page = await context.NewPageAsync();
         }
 
+       
+
+
         [TearDown]
         public async Task TearDown()
         {
@@ -35,21 +38,6 @@ namespace commitQualityPractice
             {
                 playwright.Dispose();
             }
-        }
-
-        [Test]
-        public async Task Test1()
-        {
-            // Navigating to the page
-            await page.GotoAsync(url: "http://eaapp.somee.com/");
-
-            await page.ClickAsync(selector: "text=Login");
-
-            // Screenshot
-            await page.ScreenshotAsync(new PageScreenshotOptions
-            {
-                Path = "loginpage.jpg"
-            });
         }
     }
 }
