@@ -5,21 +5,7 @@ namespace commitQualityPractice
 
     public class TestLoginAndLogOut :TestBase
     {
-        //public IPage page; // Declare the 'page' variable  
-        //public IBrowser Browser; // Correctly declare the 'Browser' variable as IBrowser
-
-        [SetUp]
-        public async Task SetUp()
-        {
-            // Ensure 'Browser' is initialized before calling 'NewPageAsync'
-            //if (Browser == null)
-            //{
-            //    var playwright = await Playwright.CreateAsync();
-            //    Browser = await playwright.Chromium.LaunchAsync(new BrowserTypeLaunchOptions { Headless = true });
-            //}
-
-           // page = await Browser.NewPageAsync(); // Initialize the 'page' variable  
-        }
+        
 
         [Test]
         public async Task Test_LoginAndLogOut()
