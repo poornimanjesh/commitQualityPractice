@@ -9,7 +9,7 @@ using NUnit.Framework;
 namespace commitQualityPractice
 {
 
-    public class Tests
+    public class TestLogin
 
     {
         [SetUp]
@@ -30,9 +30,9 @@ namespace commitQualityPractice
             //page initializing
             var page = await browser.NewPageAsync();
             //navigating to the page
-            await page.GotoAsync(url: "https://app.atomlearning.com/public/");
+            await page.GotoAsync(url: "http://eaapp.somee.com/");
 
-            await page.ClickAsync(selector: "text= Accept");
+            await page.ClickAsync(selector: "text=Login");
 
             // screenshot
 
