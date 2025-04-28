@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.Playwright;
 using NUnit.Framework;
 
-namespace commitQualityPractice
+namespace commitQualityPractice_Playwright.Tests
 {
 
     public class TestBase
