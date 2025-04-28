@@ -4,36 +4,36 @@ LoginPage lp;
 
 namespace commitQualityPractice_Playwright.Tests
 {
-
-    public class TestLoginAndLogOut :TestBase
-
+    public class TestLoginAndLogOut : TestBase
     {
-
-       
         [SetUp]
         public async Task SetUp()
         {
             // Navigating to the page  
             await page.GotoAsync(url: "http://eaapp.somee.com/");
-           
-
-
         }
 
+        [Test]
+        public async Task clickLoginLink()
+        {
+            // Updated to use WaitForURLAsync instead of the obsolete WaitForNavigationAsync
+            var navigationTask = page.WaitForURLAsync("**/Login");
 
-        
+            LoginPage lp = new LoginPage(page);
+            await lp.clickLoginlink();
+
+            await navigationTask;
+        }
+
         [Test]
         public async Task Test_EmployeeDetailsVisible()
         {
-
-           LoginPage lp = new LoginPage(page);
+            LoginPage lp = new LoginPage(page);
             lp.clickLoginlink();
             lp.FillUserNameTextField("admin");
             lp.FillPasswordTextField("password");
             lp.ClickLogInButton();
             lp.IsEmployeeDetailsTextVisible();
         }
-
-        
     }
 }
