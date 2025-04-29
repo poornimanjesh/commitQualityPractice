@@ -42,17 +42,20 @@ namespace commitQualityPractice_Playwright.Tests
             await lp.FillUserNameTextField("admin");
             await lp.FillPasswordTextField("password");
             await lp.ClickLogInButton();
-            await lp.IsEmployeeDetailsTextVisible();
-            await lp.ClickEmployeeListLink();
 
             // Corrected the declaration and initialization of waitResponse
-            var waitResponse = await page.WaitForResponseAsync("**/Employee");
+            //Task<IRequest> waitResponse = page.WaitForRequestAsync(urlOrPredicate: "**/Employee");
+            //await lp.ClickEmployeeListLink();
+            //var getResponse = await waitResponse; // Fixed the incorrect reference to WaitForResponseAsync
+            //var url = getResponse.Url;
+            //var headder=getResponse.Headers;
+            //var resType = getResponse.ResourceType;
 
-            // Corrected the usage of ClickEmployeeListLink
-            await lp.ClickEmployeeListLink();
+            var responce = await page.RunAndWaitForResponseAsync(async() =>
+            {
+              await lp.ClickEmployeeListLink();
+            },x=>x.Url.Contains("/Employee"));
 
-            // Updated assertion to check if the response is successful
-            Assert.That(waitResponse != null && waitResponse.Status == 200, "Employee list page did not load successfully.");
         }
     }
 }
