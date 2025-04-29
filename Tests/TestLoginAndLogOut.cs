@@ -44,9 +44,18 @@ namespace commitQualityPractice_Playwright.Tests
             await lp.ClickLogInButton();
 
             // Corrected the declaration and initialization of waitResponse
-            Task<IRequest> waitResponse = page.WaitForRequestAsync(urlOrPredicate: "**/Employee");
-            await lp.ClickEmployeeListLink();
-            var getResponse = await waitResponse; // Fixed the incorrect reference to WaitForResponseAsync
+            //Task<IRequest> waitResponse = page.WaitForRequestAsync(urlOrPredicate: "**/Employee");
+            //await lp.ClickEmployeeListLink();
+            //var getResponse = await waitResponse; // Fixed the incorrect reference to WaitForResponseAsync
+            //var url = getResponse.Url;
+            //var headder=getResponse.Headers;
+            //var resType = getResponse.ResourceType;
+
+            var responce = await page.RunAndWaitForResponseAsync(async() =>
+            {
+              await lp.ClickEmployeeListLink();
+            },x=>x.Url.Contains("/Employee"));
+
         }
     }
 }
